@@ -54,7 +54,7 @@ If you discover any security related issues, please email marco@seofood.de inste
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Marco Hillger](https://github.com/seofood)
 - [All Contributors](../../contributors)
 
 ## License
