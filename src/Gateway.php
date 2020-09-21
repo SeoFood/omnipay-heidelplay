@@ -5,6 +5,7 @@ namespace Omnipay\Heidelpay;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Heidelpay\Message\AuthorizeRequest;
 use Omnipay\Heidelpay\Message\ChargeRequest;
+use Omnipay\Heidelpay\Message\CreateCustomerRequest;
 use Omnipay\Heidelpay\Message\CreateTypeRequest;
 
 /**
@@ -67,6 +68,17 @@ class Gateway extends AbstractGateway
     public function createType(array $parameters = array())
     {
         return $this->createRequest(CreateTypeRequest::class, $parameters);
+    }
+
+    /**
+     * Create a customer request
+     *
+     * @param array $parameters
+     * @return \Omnipay\Common\Message\AbstractRequest
+     */
+    public function createCustomer(array $parameters = array())
+    {
+        return $this->createRequest(CreateCustomerRequest::class, $parameters);
     }
 
     /**

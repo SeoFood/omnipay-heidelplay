@@ -3,7 +3,9 @@
 
 namespace Omnipay\Heidelpay\Tests;
 
+use Omnipay\Common\CreditCard;
 use Omnipay\Heidelpay\Gateway;
+use Omnipay\Heidelpay\Message\CreateCustomerResponse;
 use Omnipay\Heidelpay\Message\CreateTypeResponse;
 use Omnipay\Tests\GatewayTestCase;
 
@@ -39,6 +41,25 @@ class GatewayTest extends GatewayTestCase
         $this->assertTrue($response->isSuccessful());
         $this->assertSame('invoice-guaranteed', $response->getType());
         $this->assertSame('s-ivg-k9vmwho6rgds', $response->getTransactionReference());
+    }
+
+    /**
+     *
+     */
+    public function testCreateCustomer()
+    {
+        $this->setMockHttpResponse('CustomerSuccess.txt');
+
+        $card = new CreditCard();
+        $card->setFirstName('Karl');
+
+        $response = $this->gateway->createCustomer(compact('card'))->send();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
+        $this->assertInstanceOf(CreateCustomerResponse::class, $response);
+        $this->assertTrue($response->isSuccessful());
+        $this->assertSame('s-cst-eb45f830ee46', $response->getTransactionReference());
     }
 
     /**
