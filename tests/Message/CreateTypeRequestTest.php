@@ -31,6 +31,17 @@ class CreateTypeRequestTest extends TestCase
         $this->assertSame('invoice-guaranteed', $response->getType());
     }
 
+    public function testSendParameters()
+    {
+        $this->setMockHttpResponse('CreateTypeSuccess.txt');
+
+        $this->request->setParameter('iban', 'DE89370400440532013000');
+        $response = $this->request->send();
+
+        $this->assertSame('DE89370400440532013000', $this->request->getData()['iban']);
+        $this->assertTrue($response->isSuccessful());
+    }
+
     public function testGetEndpoint()
     {
         $this->assertSame('https://api.heidelpay.com/v1/types/invoice-guaranteed', $this->request->getEndpoint());

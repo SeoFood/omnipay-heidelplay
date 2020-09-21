@@ -10,6 +10,8 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
  */
 abstract class AbstractRequest extends BaseAbstractRequest
 {
+    protected $sdkVersion = '1.0';
+
     protected $liveEndpoint = 'https://api.heidelpay.com/v1/';
 
 
@@ -35,7 +37,11 @@ abstract class AbstractRequest extends BaseAbstractRequest
         $response = $this->httpClient->request(
             $this->getHttpMethod(),
             $this->getEndpoint(),
-            array('Authorization' => 'Basic '.base64_encode($this->getApiKey().':')),
+            [
+                'SDK-TYPE' => 'Omnipay-SDK',
+                'SDK-VERSION' => $this->sdkVersion,
+                'Authorization' => 'Basic '.base64_encode($this->getApiKey().':')
+            ],
             $body
         );
         $data = json_decode($response->getBody(), true);

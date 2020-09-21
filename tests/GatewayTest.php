@@ -4,7 +4,6 @@
 namespace Omnipay\Heidelpay\Tests;
 
 use Omnipay\Heidelpay\Gateway;
-use Omnipay\Heidelpay\Message\CreateTypeRequest;
 use Omnipay\Heidelpay\Message\CreateTypeResponse;
 use Omnipay\Tests\GatewayTestCase;
 
@@ -28,21 +27,6 @@ class GatewayTest extends GatewayTestCase
     /**
      *
      */
-    public function testAuthorize()
-    {
-        $this->setMockHttpResponse('AuthorizeSuccess.txt');
-
-        $response = $this->gateway->authorize(['amount' => '10.00', 'currency' => 'EUR', 'typeId' => '123'])->send();
-
-        $this->assertTrue($response->isSuccessful());
-        $this->assertFalse($response->isRedirect());
-        $this->assertInstanceOf('Omnipay\Heidelpay\Message\Response', $response);
-        $this->assertSame('s-aut-1', $response->getTransactionReference());
-    }
-
-    /**
-     *
-     */
     public function testCreateType()
     {
         $this->setMockHttpResponse('CreateTypeSuccess.txt');
@@ -56,4 +40,44 @@ class GatewayTest extends GatewayTestCase
         $this->assertSame('invoice-guaranteed', $response->getType());
         $this->assertSame('s-ivg-k9vmwho6rgds', $response->getTransactionReference());
     }
+
+    /**
+     *
+     */
+    public function testAuthorize()
+    {
+        $this->setMockHttpResponse('AuthorizeSuccess.txt');
+
+        $response = $this->gateway->authorize(['amount' => '10.00', 'currency' => 'EUR', 'typeId' => '123'])->send();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
+        $this->assertInstanceOf('Omnipay\Heidelpay\Message\Response', $response);
+        $this->assertSame('s-aut-1', $response->getTransactionReference());
+    }
+
+    public function testCapture()
+    {
+        $this->setMockHttpResponse('AuthorizeSuccess.txt');
+
+        $response = $this->gateway->capture(['amount' => '10.00', 'currency' => 'EUR', 'typeId' => '123'])->send();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
+        $this->assertInstanceOf('Omnipay\Heidelpay\Message\Response', $response);
+        $this->assertSame('s-aut-1', $response->getTransactionReference());
+    }
+
+    public function testCharge()
+    {
+        $this->setMockHttpResponse('AuthorizeSuccess.txt');
+
+        $response = $this->gateway->purchase(['amount' => '10.00', 'currency' => 'EUR', 'typeId' => '123'])->send();
+
+        $this->assertTrue($response->isSuccessful());
+        $this->assertFalse($response->isRedirect());
+        $this->assertInstanceOf('Omnipay\Heidelpay\Message\Response', $response);
+        $this->assertSame('s-aut-1', $response->getTransactionReference());
+    }
+
 }

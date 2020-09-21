@@ -12,7 +12,10 @@ class CreateTypeRequest extends AbstractRequest
     {
         $this->validate('type');
 
-        return [];
+        $parameters = parent::getParameters();
+        unset($parameters['type']);
+
+        return $parameters;
     }
 
     /**
@@ -31,6 +34,12 @@ class CreateTypeRequest extends AbstractRequest
     {
         return $this->setParameter('type', $value);
     }
+
+    public function setParameter($key, $value)
+    {
+        return parent::setParameter($key, $value);
+    }
+
 
     /**
      * @return string

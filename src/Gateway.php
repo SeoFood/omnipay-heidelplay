@@ -4,6 +4,7 @@ namespace Omnipay\Heidelpay;
 
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Heidelpay\Message\AuthorizeRequest;
+use Omnipay\Heidelpay\Message\ChargeRequest;
 use Omnipay\Heidelpay\Message\CreateTypeRequest;
 
 /**
@@ -80,11 +81,11 @@ class Gateway extends AbstractGateway
 
     public function capture(array $parameters = array())
     {
-        return $this->createRequest(AuthorizeRequest::class, $parameters);
+        return $this->createRequest(ChargeRequest::class, $parameters);
     }
 
     public function purchase(array $parameters = array())
     {
-        return $this->createRequest(AuthorizeRequest::class, $parameters);
+        return $this->createRequest(ChargeRequest::class, $parameters);
     }
 }

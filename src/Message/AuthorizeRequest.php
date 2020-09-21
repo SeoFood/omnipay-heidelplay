@@ -6,7 +6,7 @@ namespace Omnipay\Heidelpay\Message;
  *
  * @method Response send()
  */
-class AuthorizeRequest extends AbstractRequest
+class AuthorizeRequest extends PaymentRequest
 {
     public function getData()
     {
@@ -35,6 +35,6 @@ class AuthorizeRequest extends AbstractRequest
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . 'payments/authorize';
+        return parent::getEndpoint() . 'authorize';
     }
 }

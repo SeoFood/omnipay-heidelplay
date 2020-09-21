@@ -1,0 +1,44 @@
+HTTP/2 201
+date: Tue, 15 Sep 2020 15:52:01 GMT
+content-type: application/json;charset=UTF-8
+content-length: 468
+server: nginx
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+strict-transport-security: max-age=31536000; includeSubDomains;
+
+{
+    "id": "s-chg-1",
+    "isSuccess": true,
+    "isPending": false,
+    "isError": false,
+    "isCanceled": false,
+    "message": {
+        "code": "COR.000.100.112",
+        "customer": "Request successfully processed in 'Merchant in Connector Test Mode'"
+    },
+    "amount": "100.0000",
+    "currency": "EUR",
+    "returnUrl": "https://www.heidelpay.com",
+    "paymentReference": "Test charge transaction",
+    "date": "2018-09-13 21:27:16",
+    "resources": {
+        "customerId": "",
+        "paymentId": "s-pay-2",
+        "basketId": "",
+        "riskId": "",
+        "metadataId": "",
+        "typeId": "s-crd-fm7tifzkqewy"
+    },
+    "processing": {
+        "uniqueId": "31HA07BC8179DC97ADB61081D525202A",
+        "shortId": "4008.0043.6848",
+        "3dsecure": false
+    }
+}
