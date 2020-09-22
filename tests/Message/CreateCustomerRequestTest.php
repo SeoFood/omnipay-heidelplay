@@ -32,6 +32,7 @@ class CreateCustomerRequestTest extends TestCase
 
         $data = $this->request->getData();
         $this->assertSame('Karl', $data['firstname']);
+        $this->assertSame('Karl', $data['billingAddress.name']);
 
         $response = $this->request->send();
 

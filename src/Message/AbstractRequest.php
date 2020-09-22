@@ -32,18 +32,19 @@ abstract class AbstractRequest extends BaseAbstractRequest
 
     public function sendData($data)
     {
-        $body = $data ? http_build_query($data) : null;
-
+        $body = $data ? http_build_query($data, '', '&') : null;
         $response = $this->httpClient->request(
             $this->getHttpMethod(),
             $this->getEndpoint(),
             [
                 'SDK-TYPE' => 'Omnipay-SDK',
                 'SDK-VERSION' => $this->sdkVersion,
-                'Authorization' => 'Basic '.base64_encode($this->getApiKey().':')
+                'Authorization' => 'Basic '.base64_encode($this->getApiKey().':'),
+                'Content-Type' => 'application/x-www-form-urlencoded'
             ],
             $body
         );
+
         $data = json_decode($response->getBody(), true);
 
         return $this->createResponse($data);

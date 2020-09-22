@@ -9,7 +9,7 @@ class PaymentResponse extends Response
 {
     public function isSuccessful()
     {
-        return $this->data['isSuccess'];
+        return !$this->data['isError'];
     }
 
     public function isRedirect()

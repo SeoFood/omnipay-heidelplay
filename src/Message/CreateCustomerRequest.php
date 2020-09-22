@@ -16,11 +16,20 @@ class CreateCustomerRequest extends AbstractRequest
             'firstname' => $this->getCard()->getFirstName(),
             'lastname' => $this->getCard()->getLastName(),
             'birthDate' => $this->getCard()->getBirthday(),
-            'email' => $this->getCard()->getEmail(),
-            'phone' => $this->getCard()->getPhone(),
+            'email' => $this->getCard()->getEmail()
         ];
-        $data['billingAddress'] = $this->getAddressData('Billing');
-        $data['shippingAddress'] = $this->getAddressData('Shipping');
+
+        if ($this->getCard()->getPhone()) {
+            $data['phone'] = $this->getCard()->getPhone();
+        }
+
+        if ($this->getCard()->getBillingName()) {
+            $data = array_merge($data, $this->getAddressData('Billing'));
+        }
+
+        if ($this->getCard()->getShippingName()) {
+            $data = array_merge($data, $this->getAddressData('Shipping'));
+        }
 
         return $data;
     }
@@ -37,8 +46,7 @@ class CreateCustomerRequest extends AbstractRequest
         $card = $this->getCard();
 
         $mapping = [
-            'firstname' => 'FirstName',
-            'lastname' => 'LastName',
+            'name' => 'Name',
             'street' => 'Address1',
             'city' => 'City',
             'zip' => 'Postcode',
@@ -49,7 +57,10 @@ class CreateCustomerRequest extends AbstractRequest
         $data = [];
 
         foreach ($mapping as $heidelpayName => $omnipayName) {
-            $data[$heidelpayName] = call_user_func([$card, 'get'.$type.$omnipayName]);
+            $value = call_user_func([$card, 'get'.$type.$omnipayName]);
+            if ($value !== null) {
+                $data[strtolower($type) . 'Address.' . $heidelpayName] = $value;
+            }
         }
         return $data;
     }

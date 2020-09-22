@@ -20,4 +20,17 @@ class Response extends AbstractResponse
             return $this->data['id'];
         }
     }
+
+    public function getMessage()
+    {
+        $message = '';
+
+        if (is_array($this->data['errors'])) {
+            foreach ($this->data['errors'] as $error) {
+                $message .= $error['customerMessage'] . ' ';
+            }
+        }
+
+        return $message;
+    }
 }

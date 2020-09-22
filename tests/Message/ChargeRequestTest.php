@@ -53,7 +53,7 @@ class ChargeRequestTest extends TestCase
 
         $data = $this->request->getData();
 
-        $this->assertSame(1337, $data['resources']['basketId']);
+        $this->assertSame(1337, $data['resources.basketId']);
         $this->assertSame(4567, $data['orderId']);
         $this->assertSame('https://example.com', $data['returnUrl']);
     }

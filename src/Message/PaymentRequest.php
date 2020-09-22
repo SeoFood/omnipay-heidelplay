@@ -24,20 +24,18 @@ class PaymentRequest extends AbstractRequest
             $data['orderId'] = $this->getTransactionId();
         }
 
-        $data['resources'] = [
-            'typeId' => $this->getTypeId()
-        ];
+        $data['resources.typeId'] = $this->getTypeId();
 
         if ($this->getCustomerId()) {
-            $data['resources']['customerId'] = $this->getCustomerId();
+            $data['resources.customerId'] = $this->getCustomerId();
         }
 
         if ($this->getBasketId()) {
-            $data['resources']['basketId'] = $this->getBasketId();
+            $data['resources.basketId'] = $this->getBasketId();
         }
 
         if ($this->getMetaDataId()) {
-            $data['resources']['metadataid'] = $this->getMetaDataId();
+            $data['resources.metadataid'] = $this->getMetaDataId();
         }
 
         return $data;
