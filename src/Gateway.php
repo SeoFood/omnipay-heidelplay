@@ -8,6 +8,7 @@ use Omnipay\Heidelpay\Message\ChargeRequest;
 use Omnipay\Heidelpay\Message\CreateBasketRequest;
 use Omnipay\Heidelpay\Message\CreateCustomerRequest;
 use Omnipay\Heidelpay\Message\CreateTypeRequest;
+use Omnipay\Heidelpay\Message\ShipmentRequest;
 
 /**
  * Heidelpay Charge Gateway.
@@ -105,7 +106,7 @@ class Gateway extends AbstractGateway
 
     public function capture(array $parameters = array())
     {
-        return $this->createRequest(ChargeRequest::class, $parameters);
+        return $this->createRequest(ShipmentRequest::class, $parameters);
     }
 
     public function purchase(array $parameters = array())

@@ -102,14 +102,14 @@ class GatewayTest extends GatewayTestCase
 
     public function testCapture()
     {
-        $this->setMockHttpResponse('AuthorizeSuccess.txt');
+        $this->setMockHttpResponse('CaptureSuccess.txt');
 
-        $response = $this->gateway->capture(['amount' => '10.00', 'currency' => 'EUR', 'typeId' => '123'])->send();
+        $response = $this->gateway->capture(['transactionReference' => 1337])->send();
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertInstanceOf('Omnipay\Heidelpay\Message\Response', $response);
-        $this->assertSame('s-aut-1', $response->getTransactionReference());
+        $this->assertSame('s-shp-1', $response->getTransactionReference());
     }
 
     public function testCharge()

@@ -1,0 +1,39 @@
+HTTP/2 201
+date: Tue, 15 Sep 2020 15:52:01 GMT
+content-type: application/json;charset=UTF-8
+content-length: 468
+server: nginx
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+strict-transport-security: max-age=31536000; includeSubDomains;
+
+{
+    "id": "s-shp-1",
+    "isSuccess": true,
+    "isPending": false,
+    "isError": false,
+    "isCanceled": false,
+    "message": {
+        "code": "COR.000.100.112",
+        "customer": "Request successfully processed in 'Merchant in Connector Test Mode'"
+    },
+    "amount": "100.0000",
+    "currency": "EUR",
+    "date": "2018-09-24 21:07:28",
+    "resources": {
+        "customerId": "s-cst-138b70861e6c",
+        "paymentId": "s-pay-762",
+        "metadataId": "",
+        "typeId": "s-ivg-f3jzoiseumso"
+    },
+    "processing": {
+        "uniqueId": "31HA07BC81AB33BC5F441F8B87699008",
+        "shortId": "4017.4964.7700"
+    }
+}
