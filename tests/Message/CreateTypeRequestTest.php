@@ -24,7 +24,7 @@ class CreateTypeRequestTest extends TestCase
 
     public function testSend()
     {
-        $this->setMockHttpResponse('CreateTypeSuccess.txt');
+        $this->setMockHttpResponse('TypeSuccess.txt');
         $response = $this->request->send();
 
         $this->assertTrue($response->isSuccessful());
@@ -33,7 +33,7 @@ class CreateTypeRequestTest extends TestCase
 
     public function testSendParameters()
     {
-        $this->setMockHttpResponse('CreateTypeSuccess.txt');
+        $this->setMockHttpResponse('TypeSuccess.txt');
 
         $this->request->setParameter('iban', 'DE89370400440532013000');
         $response = $this->request->send();

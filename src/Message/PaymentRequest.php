@@ -87,4 +87,9 @@ class PaymentRequest extends AbstractRequest
     {
         return parent::getEndpoint() . 'payments/';
     }
+
+    protected function createResponse($data)
+    {
+        return $this->response = new PaymentResponse($this, $data);
+    }
 }

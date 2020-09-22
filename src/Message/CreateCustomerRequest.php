@@ -64,6 +64,6 @@ class CreateCustomerRequest extends AbstractRequest
 
     protected function createResponse($data)
     {
-        return $this->response = new CreateCustomerResponse($this, $data);
+        return $this->response = new Response($this, $data);
     }
 }

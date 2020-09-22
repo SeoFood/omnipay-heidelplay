@@ -1,0 +1,18 @@
+HTTP/2 201
+date: Tue, 15 Sep 2020 15:52:01 GMT
+content-type: application/json;charset=UTF-8
+content-length: 468
+server: nginx
+vary: Origin
+vary: Access-Control-Request-Method
+vary: Access-Control-Request-Headers
+x-content-type-options: nosniff
+x-xss-protection: 1; mode=block
+cache-control: no-cache, no-store, max-age=0, must-revalidate
+pragma: no-cache
+expires: 0
+strict-transport-security: max-age=31536000; includeSubDomains;
+
+{
+  "id": "s-bsk-1"
+}
