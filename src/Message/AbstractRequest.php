@@ -10,7 +10,7 @@ use Omnipay\Common\Message\AbstractRequest as BaseAbstractRequest;
  */
 abstract class AbstractRequest extends BaseAbstractRequest
 {
-    protected $sdkVersion = '1.0';
+    protected $sdkVersion = '3.0.0';
 
     protected $liveEndpoint = 'https://api.heidelpay.com/v1/';
 

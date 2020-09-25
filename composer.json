@@ -5,7 +5,7 @@
         "omnipay",
         "heidelpay"
     ],
-    "version": "1.0.0",
+    "version": "3.0.0",
     "homepage": "https://github.com/seofood/omnipay-heidelpay",
     "license": "MIT",
     "authors": [
@@ -40,7 +40,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "3.0-dev"
         }
     },
     "minimum-stability": "dev",
