@@ -10,13 +10,25 @@ class ShipmentRequest extends AbstractRequest
 {
     public function getData()
     {
-        $this->validate('transactionReference');
+        $this->validate('transactionId');
 
-        return [];
+        $data = [];
+
+        if ($this->getTransactionReference()) {
+            $data['invoiceId'] = $this->getTransactionReference();
+        }
+
+        return $data;
     }
 
     public function getEndpoint()
     {
-        return parent::getEndpoint() . $this->getTransactionReference() . '/shipments';
+        return parent::getEndpoint() . 'payments/' . $this->getTransactionId() . '/shipments';
+    }
+
+
+    protected function createResponse($data)
+    {
+        return $this->response = new ShipmentResponse($this, $data);
     }
 }

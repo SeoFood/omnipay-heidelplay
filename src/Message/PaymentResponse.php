@@ -26,4 +26,11 @@ class PaymentResponse extends Response
     {
         return $this->data['isPending'];
     }
+
+    public function getTransactionReference()
+    {
+        if (isset($this->data['id'])) {
+            return $this->data['resources']['paymentId'];
+        }
+    }
 }

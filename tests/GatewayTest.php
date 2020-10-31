@@ -97,14 +97,17 @@ class GatewayTest extends GatewayTestCase
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertInstanceOf('Omnipay\Heidelpay\Message\Response', $response);
-        $this->assertSame('s-aut-1', $response->getTransactionReference());
+        $this->assertSame('s-pay-1', $response->getTransactionReference());
     }
 
     public function testCapture()
     {
         $this->setMockHttpResponse('CaptureSuccess.txt');
 
-        $response = $this->gateway->capture(['transactionReference' => 1337])->send();
+        $response = $this->gateway->capture([
+            'transactionReference' => 1337,
+            'transactionId' => 's-pay-762',
+        ])->send();
 
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
@@ -121,7 +124,7 @@ class GatewayTest extends GatewayTestCase
         $this->assertTrue($response->isSuccessful());
         $this->assertFalse($response->isRedirect());
         $this->assertInstanceOf('Omnipay\Heidelpay\Message\Response', $response);
-        $this->assertSame('s-aut-1', $response->getTransactionReference());
+        $this->assertSame('s-pay-1', $response->getTransactionReference());
     }
 
 }
